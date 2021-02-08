@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('Salut !');
+
+    // Interpolated
+    console.log('Salut je suis un message de %s', '💩');
+
+    // Styled
+    console.log('%c Je suis magnifique !', 'font-size = 50px; color:pink;background:yellow;');
+
+    // warning!
+    console.warn('ATTENTION');
+
+    // Error :|
+    console.error('OOPS');
+
+    // Info
+    console.info('La licorne est l\'animal nationnal de l\'écosse .');
+
+    // Testing
+    console.assert(1 === 2, 'C\'est faux');
+
+    // clearing
+    //console.clear();
+
+    // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    //console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      //console.group(`${dog.name}`)
+      console.groupCollapsed(`${dog.name}`)
+      console.log(`Voici ${dog.name}`);
+      console.log(`${dog.name} a ${dog.age} ans`);
+      console.log(`${dog.name} a ${dog.age * 7} années d'humain`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Yo');
+    console.count('Yo');
+    console.count('Salut');
+    console.count('Yo');
+    console.count('Yo');
+    console.count('ça roule ?');
+    console.count('Yo');
+    console.count('Yo');
+    console.count('Yo');
+    console.count('Salut');
+    console.count('Salut');
+    console.count('Yo');
+
+
+    // timing
+    console.time('Chargement des données')
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('Chargement des données');
+        console.log(data);
+      });
+
+      console.table(dogs);
+
+  </script>
+</body>
+</html>
